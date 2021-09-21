@@ -6,26 +6,35 @@ import { Switch, Route, } from "react-router-dom";
 import UserProvider from './provider/UserProvider';
 import styled from 'styled-components';
 import { primaryColor, secondaryColor, terColor } from './components/Colors';
+import LandscapeProvider from './provider/LandscapeProvider';
+import LandscapeList from './components/LandscapeList';
 
 const App = () => (
   <UserProvider>
-  <Fragment>
-    <Navbar />
-    <Container>
-      <Switch>
-        <Route
-          exact
-          path="/"
-          render={ () => <div>Home</div>}
-        />
-        <Route
-          exact
-          path="/user/profile"
-          render={ () => <UserProfile /> }
-        />
-      </Switch>
-    </Container>
-  </Fragment>
+  <LandscapeProvider>
+    <Fragment>
+      <Navbar />
+      <Container>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={ () => <div>Home</div>}
+          />
+          <Route
+            exact
+            path="/user/profile"
+            render={ () => <UserProfile /> }
+          />
+          <Route
+            exact
+            path="/user/landscape"
+            render={ () => <LandscapeList /> }
+          />
+        </Switch>
+      </Container>
+    </Fragment>
+  </LandscapeProvider>
   </UserProvider>
 )
 

@@ -21,6 +21,11 @@ const Navbar = () => {
       {firstName}
       </Menu.Item>
     </NavLink>
+    <NavLink to="/user/landscape">
+      <Menu.Item>
+      Landscapes
+      </Menu.Item>
+    </NavLink>
   </Menu>
   ) 
 }
