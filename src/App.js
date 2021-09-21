@@ -4,6 +4,8 @@ import UserProfile from "./components/UserProfile";
 import { Container, } from "semantic-ui-react";
 import { Switch, Route, } from "react-router-dom";
 import UserProvider from './provider/UserProvider';
+import styled from 'styled-components';
+import { primaryColor, secondaryColor, terColor } from './components/Colors';
 
 const App = () => (
   <UserProvider>
@@ -14,7 +16,7 @@ const App = () => (
         <Route
           exact
           path="/"
-          render={ () => <div>Home</div> }
+          render={ () => <div>Home</div>}
         />
         <Route
           exact
@@ -28,3 +30,4 @@ const App = () => (
 )
 
 export default App;
+

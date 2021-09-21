@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
-import { Form, } from "semantic-ui-react";
+import { Form, Segment, } from "semantic-ui-react";
+import styled from "styled-components";
 import { UserContext } from "../provider/UserProvider";
 
 const UserForm = (props) => {
@@ -23,8 +24,9 @@ const UserForm = (props) => {
   
 
     return (
-      <Form onSubmit={handleSubmit}>
-        <Form.Input
+      <Segment inverted color="grey" compact>
+      <Form inverted onSubmit={handleSubmit}>
+        <Form.Input 
           label="New Email"
           type="text"
           name="email"
@@ -45,11 +47,13 @@ const UserForm = (props) => {
           value={formdata.lastName}
           onChange={handleChange}
         />
-        <Form.Button color="blue">Save</Form.Button>
+        <Form.Button>Save</Form.Button>
       </Form>
+    </Segment>
     )
   }
 
 
 
 export default UserForm;
+
