@@ -1,41 +1,55 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Form, } from "semantic-ui-react";
+import { UserContext } from "../provider/UserProvider";
 
-class UserForm extends React.Component {
-  state = { email: "", firstName: "", lastName: "", avatar:""};
+const UserForm = (props) => {
+  const {email, firstName, lastName, avatar, updateUser} = useContext(UserContext);
+  const [formdata, setFormdata] = useState({
+    email: email,
+    firstName: firstName,
+    lastName: lastName, 
+    avatar:avatar});
   
-  handleChange = (e, { name, value }) => this.setState({ [name]: value, });
+  const handleChange = (e, { name, value }) =>{
+
+    setFormdata({...formdata, [name]: value})
+  };
+
   
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-  }
+    updateUser(formdata)
+  };
   
-  render() {
-    const { email, firstName, lastName, avatar } = this.state;
+
     return (
-      <div>
-        <h1>Here's something</h1>
-      </div>
-      // <Form onSubmit={this.handleSubmit}>
-      //   <Form.Input
-      //     label="New Username"
-      //     type="text"
-      //     name="username"
-      //     value={username}
-      //     onChange={this.handleChange}
-      //   />
-      //   <Form.Select
-      //     label="Membership Level"
-      //     name="membershipLevel"
-      //     value={membershipLevel}
-      //     onChange={this.handleChange}
-      //     options={membershipOptions}
-      //   />
-      //   <Form.Button color="blue">Save</Form.Button>
-      // </Form>
+      <Form onSubmit={handleSubmit}>
+        <Form.Input
+          label="New Email"
+          type="text"
+          name="email"
+          value={formdata.email}
+          onChange={handleChange}
+        />
+        <Form.Input
+          label="New First Name"
+          type="text"
+          name="firstName"
+          value={formdata.firstName}
+          onChange={handleChange}
+        />
+        <Form.Input
+          label="New Last Name"
+          type="text"
+          name="lastName"
+          value={formdata.lastName}
+          onChange={handleChange}
+        />
+        <Form.Button color="blue">Save</Form.Button>
+      </Form>
     )
   }
-}
+
 
 
 export default UserForm;

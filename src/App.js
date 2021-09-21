@@ -3,8 +3,10 @@ import Navbar from "./components/Navbar";
 import UserProfile from "./components/UserProfile";
 import { Container, } from "semantic-ui-react";
 import { Switch, Route, } from "react-router-dom";
+import UserProvider from './provider/UserProvider';
 
 const App = () => (
+  <UserProvider>
   <Fragment>
     <Navbar />
     <Container>
@@ -22,6 +24,7 @@ const App = () => (
       </Switch>
     </Container>
   </Fragment>
+  </UserProvider>
 )
 
 export default App;

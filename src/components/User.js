@@ -1,18 +1,23 @@
-import React from "react";
-import { Card, } from "semantic-ui-react";
+import React, { useContext } from "react";
+import { Card, Image, } from "semantic-ui-react";
+import { UserContext } from "../provider/UserProvider";
 
-const User = () => (
+const User = () => {
+  const {email, firstName, lastName, avatar} = useContext(UserContext);
+  return(
   <Card>
     <Card.Content>
-      <Card.Header>username</Card.Header>
+      <Card.Header>{`${firstName} ${lastName}`}</Card.Header>
       <Card.Meta>
-        Date Joined: dateJoined
+        Email: {email}
       </Card.Meta>
     </Card.Content>
     <Card.Content>
-      <p>Membership Level: membershipLevel</p>
+      <Image src = {avatar} fluid/>
     </Card.Content>
-  </Card>
-)
+  </Card>)
+}
+
+
 
 export default User;

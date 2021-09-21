@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink, } from "react-router-dom";
 import { Menu, } from "semantic-ui-react";
+import { UserContext } from "../provider/UserProvider";
 
-const Navbar = () => (
+const Navbar = () => {
+  const {firstName} = useContext(UserContext)
+  return(
   <Menu>
     <NavLink to="/">
       <Menu.Item>
@@ -11,11 +14,11 @@ const Navbar = () => (
     </NavLink>
     <NavLink to="/user/profile">
       <Menu.Item>
-        {/* Will be replaced with the actual username */}
-        username
+      {firstName}
       </Menu.Item>
     </NavLink>
-  </Menu> 
-)
+  </Menu>
+  ) 
+}
 
 export default Navbar;
